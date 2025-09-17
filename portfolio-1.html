@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edgar Tissot - Portfolio</title>
+<style>
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --card-border: #e0e0e0;
+    --button-bg: #333;
+    --button-text: #fff;
+}
+
+body.dark {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --card-bg: #1e1e1e;
+    --card-border: #333;
+    --button-bg: #f5f5f5;
+    --button-text: #121212;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin: 0.3rem 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.section h2 {
+    margin-top: 0;
+}
+
+button.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+button.theme-toggle:hover {
+    opacity: 0.9;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+<script>
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+}
+</script>
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()">Changer le thème</button>
+<header>
+  <h1>Edgar Tissot</h1>
+  <p>Étudiant en Master in Management (PGE) à SKEMA BS</p>
+  <p><a href="mailto:edgar.tissot@skema.edu">edgar.tissot@skema.edu</a> &nbsp;|&nbsp; <a href="tel:+33781913640">+33 7 81 91 36 40</a></p>
+</header>
+
+<div class="container">
+  <div class="section">
+    <h2>GitHub</h2>
+    <p>Consultez mes projets et contributions sur GitHub :</p>
+    <p><a href="https://github.com/edgar-tissot" target="_blank">github.com/edgar-tissot</a></p>
+  </div>
+  <div class="section">
+    <h2>Medium</h2>
+    <p>Retrouvez mes articles sur Medium :</p>
+    <p><a href="https://medium.com/@edgar-tissot" target="_blank">medium.com/@edgar-tissot</a></p>
+  </div>
+  <div class="section">
+    <h2>CV</h2>
+    <p>Téléchargez mon CV en PDF :</p>
+    <p><a href="Edgar_Tissot_Resume.pdf" target="_blank">Edgar Tissot Resume</a></p>
+  </div>
+</div>
+
+</body>
+</html>
