@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Edgar Tissot — Portfolio</title>
-  <meta name="description" content="Portfolio d'Edgar Tissot — Master in Management (PGE) à SKEMA BS." />
+  <meta name="description" content="Edgar Tissot — Master in Management (PGE) student at SKEMA Business School. Links to GitHub, Medium, and resume." />
   <style>
-    /* ---------- Thème (clair/sombre) ---------- */
+    /* ---------- Theme (light / dark) ---------- */
     :root{
       --bg: #f7f7f8;
       --text:#1f2328;
@@ -64,9 +64,10 @@
     }
     .toggle{
       position:absolute; right: 14px; top: 14px;
-      border:1px solid var(--line);
+      border:1px solid transparent;
       background:transparent; color:var(--muted);
-      padding:8px 10px; border-radius: 10px; cursor:pointer;
+      padding:4px 6px; border-radius: 10px; cursor:pointer;
+      font-size:18px; line-height:1;
     }
     main{
       margin-top: 18px;
@@ -105,12 +106,13 @@
     .small{ font-size: 13px; color: var(--muted); }
   </style>
 </head>
-<body>
+<!-- Dark by default; JS below will switch to light if user saved preference -->
+<body class="dark">
   <div class="container">
     <header>
-      <button class="toggle" id="themeToggle" aria-label="Changer le thème">🌗</button>
+      <button class="toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">☀️</button>
       <h1>Edgar Tissot</h1>
-      <p class="subtitle">Étudiant en Master in Management (PGE) — SKEMA Business School</p>
+      <p class="subtitle">Master in Management (PGE) student — SKEMA Business School</p>
       <div class="contact">
         <a href="mailto:edgar.tissot@skema.edu">edgar.tissot@skema.edu</a>
         <a href="tel:+33781913640">+33&nbsp;7&nbsp;81&nbsp;91&nbsp;36&nbsp;40</a>
@@ -119,29 +121,28 @@
 
     <main>
       <section>
-        <h2>Réseaux & documents</h2>
+        <h2>Links & Documents</h2>
         <div class="links">
-          <!-- Remplace les URLs si besoin -->
-          <a class="btn" href="https://github.com/keelk1" target="_blank" rel="noopener">
+          <a class="btn" href="https://github.com/keelk1" target="_blank" rel="noopener noreferrer">
             <span>GitHub</span>
           </a>
-          <a class="btn" href="https://medium.com/@edgartissot01" target="_blank" rel="noopener">
+          <a class="btn" href="https://medium.com/@edgartissot01" target="_blank" rel="noopener noreferrer">
             <span>Medium</span>
           </a>
-          <a class="btn btn--accent" href="cv.pdf" target="_blank" rel="noopener">
-            <span>CV (PDF)</span>
+          <a class="btn btn--accent" href="cv.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume (PDF)</span>
           </a>
         </div>
         <p class="small" style="margin-top:10px">
-          Astuce : place ton fichier <strong>cv.pdf</strong> à côté de ce fichier <em>index.html</em> pour que le bouton fonctionne.
+          Tip: place your <strong>cv.pdf</strong> next to this <em>index.html</em> file.
         </p>
       </section>
 
       <section>
-        <h2>À propos</h2>
+        <h2>About</h2>
         <p style="margin:0">
-          J’aime passer du brouillon au concret : clarifier un problème, tester une solution,
-          mesurer l’impact et itérer. Intérêt pour le pré-seed/seed, le produit et les métriques.
+          I like turning rough ideas into something measurable: clarify the problem, test, track impact, iterate.
+          I enjoy early-stage product, metrics, and helping founders move from 0→1.
         </p>
       </section>
     </main>
@@ -150,17 +151,27 @@
   </div>
 
   <script>
-    // Année dynamique
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Thème stocké dans localStorage
-    const root = document.documentElement;
+    // Theme persistence: default dark, switch to saved preference if any
+    const applyIcon = () => {
+      const isDark = document.body.classList.contains('dark');
+      document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌙';
+      document.getElementById('themeToggle').setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      document.getElementById('themeToggle').setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    };
+
     const saved = localStorage.getItem('theme');
+    if (saved === 'light') document.body.classList.remove('dark');
     if (saved === 'dark') document.body.classList.add('dark');
+    applyIcon();
 
     document.getElementById('themeToggle').addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+      const mode = document.body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', mode);
+      applyIcon();
     });
   </script>
 </body>
