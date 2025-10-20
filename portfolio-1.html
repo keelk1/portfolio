@@ -1,126 +1,167 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edgar Tissot - Portfolio</title>
-<style>
-:root {
-    --bg-color: #f5f5f5;
-    --text-color: #333;
-    --card-bg: #ffffff;
-    --card-border: #e0e0e0;
-    --button-bg: #333;
-    --button-text: #fff;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edgar Tissot — Portfolio</title>
+  <meta name="description" content="Portfolio d'Edgar Tissot — Master in Management (PGE) à SKEMA BS." />
+  <style>
+    /* ---------- Thème (clair/sombre) ---------- */
+    :root{
+      --bg: #f7f7f8;
+      --text:#1f2328;
+      --muted:#5b616b;
+      --card:#ffffff;
+      --line:#e6e8eb;
+      --accent:#111827;
+      --accentText:#ffffff;
+      --shadow: 0 8px 30px rgba(0,0,0,.06);
+    }
+    .dark{
+      --bg:#0d1117;
+      --text:#e6edf3;
+      --muted:#9aa4af;
+      --card:#0f141b;
+      --line:#1f2630;
+      --accent:#e6edf3;
+      --accentText:#0d1117;
+      --shadow: 0 8px 30px rgba(0,0,0,.35);
+    }
 
-body.dark {
-    --bg-color: #121212;
-    --text-color: #f5f5f5;
-    --card-bg: #1e1e1e;
-    --card-border: #333;
-    --button-bg: #f5f5f5;
-    --button-text: #121212;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-header {
-    text-align: center;
-    padding: 2rem;
-}
-
-h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-header p {
-    margin: 0.3rem 0;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.section {
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
-
-.section h2 {
-    margin-top: 0;
-}
-
-button.theme-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-button.theme-toggle:hover {
-    opacity: 0.9;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-</style>
-<script>
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-}
-</script>
+    /* ---------- Base ---------- */
+    * { box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+            Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    a{ color:inherit; text-decoration: none; }
+    .container{
+      max-width: 820px;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+    header{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+      position: relative;
+    }
+    h1{ margin: 0 0 4px; font-size: 28px; letter-spacing:.2px; }
+    .subtitle{ color: var(--muted); margin: 2px 0 10px; }
+    .contact a{
+      display: inline-block;
+      padding: 6px 10px;
+      border:1px solid var(--line);
+      border-radius: 10px;
+      margin-right: 8px;
+      color: var(--muted);
+    }
+    .toggle{
+      position:absolute; right: 14px; top: 14px;
+      border:1px solid var(--line);
+      background:transparent; color:var(--muted);
+      padding:8px 10px; border-radius: 10px; cursor:pointer;
+    }
+    main{
+      margin-top: 18px;
+      display: grid; gap: 16px;
+    }
+    section{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    section h2{
+      margin:0 0 12px; font-size:18px; letter-spacing:.2px;
+    }
+    .links{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .btn{
+      display:flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px; border-radius:12px;
+      border:1px solid var(--line);
+      background: var(--bg);
+      color:var(--text);
+      transition: transform .06s ease, background .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn--accent{
+      background: var(--accent); color: var(--accentText);
+      border-color: transparent;
+    }
+    footer{ color:var(--muted); text-align:center; margin: 12px 0 32px; }
+    .small{ font-size: 13px; color: var(--muted); }
+  </style>
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()">Changer le thème</button>
-<header>
-  <h1>Edgar Tissot</h1>
-  <p>Étudiant en Master in Management (PGE) à SKEMA BS</p>
-  <p><a href="mailto:edgar.tissot@skema.edu">edgar.tissot@skema.edu</a> &nbsp;|&nbsp; <a href="tel:+33781913640">+33 7 81 91 36 40</a></p>
-</header>
+  <div class="container">
+    <header>
+      <button class="toggle" id="themeToggle" aria-label="Changer le thème">🌗</button>
+      <h1>Edgar Tissot</h1>
+      <p class="subtitle">Étudiant en Master in Management (PGE) — SKEMA Business School</p>
+      <div class="contact">
+        <a href="mailto:edgar.tissot@skema.edu">edgar.tissot@skema.edu</a>
+        <a href="tel:+33781913640">+33&nbsp;7&nbsp;81&nbsp;91&nbsp;36&nbsp;40</a>
+      </div>
+    </header>
 
-<div class="container">
-  <div class="section">
-    <h2>GitHub</h2>
-    <p>Consultez mes projets et contributions sur GitHub :</p>
-    <p><a href="https://github.com/edgar-tissot" target="_blank">github.com/edgar-tissot</a></p>
-  </div>
-  <div class="section">
-    <h2>Medium</h2>
-    <p>Retrouvez mes articles sur Medium :</p>
-    <p><a href="https://medium.com/@edgar-tissot" target="_blank">medium.com/@edgar-tissot</a></p>
-  </div>
-  <div class="section">
-    <h2>CV</h2>
-    <p>Téléchargez mon CV en PDF :</p>
-    <p><a href="Edgar_Tissot_Resume.pdf" target="_blank">Edgar Tissot Resume</a></p>
-  </div>
-</div>
+    <main>
+      <section>
+        <h2>Réseaux & documents</h2>
+        <div class="links">
+          <!-- Remplace les URLs si besoin -->
+          <a class="btn" href="https://github.com/keelk1" target="_blank" rel="noopener">
+            <span>GitHub</span>
+          </a>
+          <a class="btn" href="https://medium.com/@edgartissot01" target="_blank" rel="noopener">
+            <span>Medium</span>
+          </a>
+          <a class="btn btn--accent" href="cv.pdf" target="_blank" rel="noopener">
+            <span>CV (PDF)</span>
+          </a>
+        </div>
+        <p class="small" style="margin-top:10px">
+          Astuce : place ton fichier <strong>cv.pdf</strong> à côté de ce fichier <em>index.html</em> pour que le bouton fonctionne.
+        </p>
+      </section>
 
+      <section>
+        <h2>À propos</h2>
+        <p style="margin:0">
+          J’aime passer du brouillon au concret : clarifier un problème, tester une solution,
+          mesurer l’impact et itérer. Intérêt pour le pré-seed/seed, le produit et les métriques.
+        </p>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Edgar Tissot</footer>
+  </div>
+
+  <script>
+    // Année dynamique
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Thème stocké dans localStorage
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.body.classList.add('dark');
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>
