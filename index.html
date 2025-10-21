@@ -20,10 +20,9 @@
       --muted:#5d6672;
       --card:#ffffff;
       --line:#e7eaee;
-      --accent:#4fd1c5;          /* teal accent */
-      --accent-strong:#22c1b9;
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
-      --ring: conic-gradient(from 180deg, #4fd1c5, #7c3aed, #22d3ee, #4fd1c5);
+      --accent:#f59e0b;        /* amber-500 */
+      --accent-strong:#f97316; /* orange-500 */
+      --ring: conic-gradient(from 180deg, #f59e0b, #f97316, #facc15, #f59e0b);
     }
     .dark{
       --bg:#0d1117;
@@ -39,9 +38,10 @@
     html,body{ height:100% }
     body{
       margin:0;
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(79,209,197,.08), transparent 60%),
-                  radial-gradient(900px 500px at 110% 10%, rgba(124,58,237,.10), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(245,158,11,.10), transparent 60%),   /* amber */
+        radial-gradient(900px 500px at 110% 10%, rgba(251,146,60,.10), transparent 55%),    /* orange */
+        var(--bg);
       color: var(--text);
       font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       -webkit-font-smoothing: antialiased;
@@ -82,7 +82,7 @@
       margin-right:8px;
       transition: transform .08s ease, border-color .2s ease, background .2s ease;
     }
-    .contact a:hover{ transform: translateY(-1px); border-color: rgba(79,209,197,.5) }
+    .contact a:hover{ transform: translateY(-1px); border-color: rgba(245,158,11,.55) }
 
     /* Theme toggle minimal */
     .toggle{
@@ -93,7 +93,7 @@
       color:var(--muted); font-size:18px; line-height:1;
       transition: transform .08s ease, border-color .2s ease, background .2s ease;
     }
-    .toggle:hover{ transform: translateY(-1px); border-color: rgba(124,58,237,.45) }
+    .toggle:hover{ transform: translateY(-1px); border-color: rgba(251,146,60,.45) }
 
     /* =========== SECTIONS =========== */
     main{ margin-top: 18px; display:grid; gap:16px }
@@ -122,9 +122,9 @@
     }
     .card:hover{
       transform: translateY(-2px);
-      border-color: rgba(79,209,197,.55);
-      box-shadow: 0 14px 40px rgba(79,209,197,.08);
-      background: linear-gradient(180deg, rgba(79,209,197,.07), transparent 70%);
+      border-color: rgba(245,158,11,.55);
+      box-shadow: 0 14px 40px rgba(245,158,11,.10);
+      background: linear-gradient(180deg, rgba(245,158,11,.07), transparent 70%);
     }
     .icon{
       width:28px; height:28px; display:inline-block; flex:none;
